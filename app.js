@@ -20,6 +20,9 @@ app.use(express.static('public'))
 // require restaurant json file
 const restaurantList = require('./restaurant.json')
 
+// Include alert from node_modules
+const alert = require('alert')
+
 // Handle request and response here
 // to Get restaurant list by restaurant.json
 app.get('/', (req, res) => {
