@@ -42,9 +42,13 @@ app.get('/restaurants/:restaurant_id', (req, res) => {
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword.trim()
   const restaurants = restaurantList.results.filter((restaurant) => {
-    return restaurant.name
+    const category = restaurant.category
       .toLocaleLowerCase()
       .includes(keyword.toLocaleLowerCase())
+    const name = restaurant.name
+      .toLocaleLowerCase()
+      .includes(keyword.toLocaleLowerCase())
+    return name || category
   })
   if (!restaurants.length) {
     alert(`抱歉沒有符合 ${keyword} 的餐廳`)
