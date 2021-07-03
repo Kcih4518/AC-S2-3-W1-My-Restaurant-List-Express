@@ -19,7 +19,18 @@ app.use(express.static('public'))
 
 // Handle request and response here
 app.get('/', (req, res) => {
-  res.render('index')
+  // create a variable to store restaurantOne
+  const restaurantOne = {
+    id: 1,
+    name: 'Sababa 沙巴巴中東美食',
+    category: '中東料理',
+    rating: 4.1,
+    image:
+      'https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5635/01.jpg',
+  }
+
+  // past the movie data into 'index' partial template
+  res.render('index', { restaurant: restaurantOne })
 })
 
 // start and listen on the Express server
