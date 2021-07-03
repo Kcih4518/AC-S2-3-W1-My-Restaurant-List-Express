@@ -40,7 +40,7 @@ app.get('/restaurants/:restaurant_id', (req, res) => {
 
 // to Search restaurant by name or category
 app.get('/search', (req, res) => {
-  const keyword = req.query.keyword
+  const keyword = req.query.keyword.trim()
   const restaurants = restaurantList.results.filter((restaurant) => {
     return restaurant.name
       .toLocaleLowerCase()
