@@ -33,7 +33,7 @@ app.get('/', (req, res) => {
   }
 
   // past the movie data into 'index' partial template
-  res.render('index', { restaurant: restaurantOne })
+  res.render('index', { restaurants: restaurantList.results })
 })
 
 // start and listen on the Express server
