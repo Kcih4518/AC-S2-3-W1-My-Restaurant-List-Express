@@ -43,7 +43,7 @@ app.get('/search', (req, res) => {
       .toLocaleLowerCase()
       .includes(keyword.toLocaleLowerCase())
   })
-  res.render('index', { restaurants })
+  res.render('index', { restaurants, keyword })
 })
 
 // start and listen on the Express server
