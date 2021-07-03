@@ -14,9 +14,12 @@ const exphdbs = require('express-handlebars')
 app.engine('handlebars', exphdbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
+// setting static files
+app.use(express.static('public'))
+
 // Handle request and response here
 app.get('/', (req, res) => {
-  res.send('hello from simple server :)')
+  res.render('index')
 })
 
 // start and listen on the Express server
