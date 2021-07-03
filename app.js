@@ -21,6 +21,7 @@ app.use(express.static('public'))
 const restaurantList = require('./restaurant.json')
 
 // Handle request and response here
+// to Get restaurant list by restaurant.json
 app.get('/', (req, res) => {
   // create a variable to store restaurantOne
   const restaurantOne = {
@@ -36,11 +37,23 @@ app.get('/', (req, res) => {
   res.render('index', { restaurants: restaurantList.results })
 })
 
+// to Get restaurant description by id
 app.get('/restaurants/:restaurant_id', (req, res) => {
   const restaurant = restaurantList.results.find(
     (restaurant) => restaurant.id.toString() === req.params.restaurant_id
   )
   res.render('show', { restaurant: restaurant })
+})
+
+// to Search restaurant by name or category
+app.get('/search', (req, res) => {
+  const keyword = req.query.keyword
+  const restaurants = restaurantList.results.filter((restaurant) => {
+    return restaurant.name
+      .toLocaleLowerCase()
+      .includes(keyword.toLocaleLowerCase())
+  })
+  res.render('index', { restaurants })
 })
 
 // start and listen on the Express server
