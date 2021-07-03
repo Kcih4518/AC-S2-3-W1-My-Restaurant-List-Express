@@ -46,6 +46,10 @@ app.get('/search', (req, res) => {
       .toLocaleLowerCase()
       .includes(keyword.toLocaleLowerCase())
   })
+  if (!restaurants.length) {
+    alert(`抱歉沒有符合 ${keyword} 的餐廳`)
+  }
+
   res.render('index', { restaurants, keyword })
 })
 
