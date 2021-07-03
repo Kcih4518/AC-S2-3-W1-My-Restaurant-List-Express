@@ -41,6 +41,10 @@ app.get('/restaurants/:restaurant_id', (req, res) => {
 // to Search restaurant by name or category
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword.trim()
+
+  if (!keyword.length) {
+    alert('抱歉請輸入關鍵字')
+  }
   const restaurants = restaurantList.results.filter((restaurant) => {
     const category = restaurant.category
       .toLocaleLowerCase()
