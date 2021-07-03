@@ -17,6 +17,9 @@ app.set('view engine', 'handlebars')
 // setting static files
 app.use(express.static('public'))
 
+// require restaurant json file
+const restaurantList = require('./restaurant.json')
+
 // Handle request and response here
 app.get('/', (req, res) => {
   // create a variable to store restaurantOne
