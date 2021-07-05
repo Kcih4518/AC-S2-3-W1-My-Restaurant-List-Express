@@ -30,16 +30,8 @@ app.get('/', (req, res) => {
   res.render('index', { restaurants: restaurantList.results })
 })
 
-// to Get restaurant description by id
-app.get('/restaurants/:restaurant_id', (req, res) => {
-  const restaurant = restaurantList.results.find(
-    (restaurant) => restaurant.id.toString() === req.params.restaurant_id
-  )
-  res.render('show', { restaurant })
-})
-
 // to Search restaurant by name or category
-app.get('/search', (req, res) => {
+app.get('/restaurants/searches', (req, res) => {
   const keyword = req.query.keyword.trim()
 
   if (!keyword.length) {
@@ -59,6 +51,14 @@ app.get('/search', (req, res) => {
   }
 
   res.render('index', { restaurants, keyword })
+})
+
+// to Get restaurant description by id
+app.get('/restaurants/:restaurant_id', (req, res) => {
+  const restaurant = restaurantList.results.find(
+    (restaurant) => restaurant.id.toString() === req.params.restaurant_id
+  )
+  res.render('show', { restaurant })
 })
 
 // start and listen on the Express server
